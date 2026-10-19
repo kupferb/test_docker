@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y \
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
 
 # 2. Download and install JetBrains PyCharm Community Edition for Linux
-RUN wget https://download.jetbrains.com/python/pycharm-community-2024.1.1.tar.gz -O /tmp/pycharm.tar.gz && \
+RUN wget https://download.jetbrains.com/python/pycharm-community-2026.2.1.tar.gz -O /tmp/pycharm.tar.gz && \
     tar -xzf /tmp/pycharm.tar.gz -C /opt/ && \
     mv /opt/pycharm-community-* /opt/pycharm && \
     rm /tmp/pycharm.tar.gz
