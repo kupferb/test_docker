@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main  # Runs automatically whenever you push code to the main branch
+    paths:
+      - 'Dockerfile'
+      - 'requirements.txt'  
   workflow_dispatch: # Allows you to manually trigger the build from the GitHub UI
 
 jobs:
