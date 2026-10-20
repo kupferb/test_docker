@@ -41,4 +41,4 @@ WORKDIR /workspace
 CMD ["dbus-run-session", "startxfce4"]
 
 # Default command starts VNC server and tails logs
-CMD ["sh", "-c", "vncserver :1 -geometry 1920x1080 -depth 24 && tail -f ~/.vnc/*.log"]
+#CMD ["sh", "-c", "vncserver :1 -geometry 1920x1080 -depth 24 && tail -f ~/.vnc/*.log"]
