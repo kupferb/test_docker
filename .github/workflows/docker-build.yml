@@ -38,5 +38,5 @@ jobs:
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/linux_pycharm_gui:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/linux_pycharm_gui:1.0.0
+            ${{ secrets.DOCKERHUB_USERNAME }}/linux_pycharm_gui:2.0.0
             ${{ secrets.DOCKERHUB_USERNAME }}/linux_pycharm_gui:${{ github.sha }}
