@@ -32,5 +32,17 @@ RUN python3 -m pip install --no-cache-dir --upgrade pip && \
     python3 -m pip install --no-cache-dir -r /tmp/requirements.txt
 
 # 5. Set working directory and default startup command to launch PyCharm
+#WORKDIR /workspace
+#CMD ["/opt/pycharm/bin/pycharm.sh"]
+# 5. Set up a startup script to launch VNC and XFCE desktop
+RUN mkdir -p /root/.vnc && \
+    echo "#!/bin/bash\nxrdb $HOME/.Xresources\nstartxfce4 &" > /root/.vnc/xstartup && \
+    chmod +x /root/.vnc/xstartup
+
 WORKDIR /workspace
-CMD ["/opt/pycharm/bin/pycharm.sh"]
+
+# Expose VNC port
+EXPOSE 5901
+
+# Default command starts VNC server and tails logs
+CMD ["sh", "-c", "vncserver :1 -geometry 1920x1080 -depth 24 && tail -f ~/.vnc/*.log"]
