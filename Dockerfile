@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
     wget curl git nano \
     libgl1-mesa-glx libglib2.0-0 \
     openjdk-17-jdk python3.10 python3.10-dev python3.10-distutils python3-pip \
-    xfce4 xfce4-goodies tightvncserver && \
+    xfce4 xfce4-goodies dbus-x11 x11-utils && \
     rm -rf /var/lib/apt/lists/*
 
 # Ensure python3 points to python3.10
@@ -35,14 +35,10 @@ RUN python3 -m pip install --no-cache-dir --upgrade pip && \
 #WORKDIR /workspace
 #CMD ["/opt/pycharm/bin/pycharm.sh"]
 # 5. Set up a startup script to launch VNC and XFCE desktop
-RUN mkdir -p /root/.vnc && \
-    echo "#!/bin/bash\nxrdb $HOME/.Xresources\nstartxfce4 &" > /root/.vnc/xstartup && \
-    chmod +x /root/.vnc/xstartup
-
 WORKDIR /workspace
 
-# Expose VNC port
-EXPOSE 5901
+# Default command starts the XFCE desktop session directly over X11
+CMD ["dbus-run-session", "startxfce4"]
 
 # Default command starts VNC server and tails logs
 CMD ["sh", "-c", "vncserver :1 -geometry 1920x1080 -depth 24 && tail -f ~/.vnc/*.log"]
