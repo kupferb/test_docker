@@ -11,7 +11,8 @@ RUN apt-get update && apt-get install -y \
     software-properties-common \
     wget curl git nano \
     libgl1-mesa-glx libglib2.0-0 \
-    openjdk-17-jdk python3.10 python3.10-dev python3.10-distutils python3-pip && \
+    openjdk-17-jdk python3.10 python3.10-dev python3.10-distutils python3-pip \
+    xfce4 xfce4-goodies tightvncserver && \
     rm -rf /var/lib/apt/lists/*
 
 # Ensure python3 points to python3.10
