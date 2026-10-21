@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     wget curl git nano \
     libgl1-mesa-glx \
     libglib2.0-0 \
-    #openjdk-17-jdk \
+    openjdk-17-jdk \
     python3.10 python3.10-dev python3.10-distutils python3-pip \
     #xfce4 \
     #xfce4-goodies \
