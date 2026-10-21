@@ -29,9 +29,15 @@ RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
 COPY requirements.txt /tmp/requirements.txt
 
 # 4. Install the Python packages from the requirements file using Python 3.10 pip
+#RUN python3 -m pip install --no-cache-dir --upgrade pip && \
+#    python3 -m pip install --no-cache-dir -r /tmp/requirements.txt
 RUN python3 -m pip install --no-cache-dir --upgrade pip && \
-    python3 -m pip install --no-cache-dir -r /tmp/requirements.txt
-
+    python3 -m pip install --no-cache-dir -r /tmp/requirements.txt && \
+    python3 -m pip install --no-cache-dir pipdeptree && \
+    echo "===== Installed packages =====" && \
+    pip list && \
+    echo "===== PyJWT dependency =====" && \
+    pipdeptree --reverse --packages PyJWT || true
 # 5. Set working directory and default startup command to launch PyCharm
 #WORKDIR /workspace
 #CMD ["/opt/pycharm/bin/pycharm.sh"]
