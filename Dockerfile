@@ -15,6 +15,8 @@ RUN apt-get update && apt-get install -y \
     python3.10 python3.10-dev python3.10-distutils python3-pip \
     #xfce4 \
     #xfce4-goodies \
+    mate-desktop-environment-core \
+    mate-notification-daemon \
     dbus-x11 \
     x11-utils \
     && rm -rf /var/lib/apt/lists/*
@@ -48,7 +50,7 @@ RUN python3 -m pip install --no-cache-dir --upgrade pip && \
 WORKDIR /workspace
 
 # Default command starts the XFCE desktop session directly over X11
-CMD ["dbus-run-session", "startxfce4"]
+CMD ["dbus-run-session", "mate-session"]
 
 # Default command starts VNC server and tails logs
 #CMD ["sh", "-c", "vncserver :1 -geometry 1920x1080 -depth 24 && tail -f ~/.vnc/*.log"]
