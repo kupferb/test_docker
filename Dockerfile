@@ -1,5 +1,5 @@
 # Use official NVIDIA CUDA runtime image compatible with Blackwell (RTX 5090) 
-FROM ubuntu:22.04
+FROM nvidia/cuda:12.8.0-cudnn-devel-ubuntu22.04
 
 # Prevent interactive prompts during package installation
 ENV DEBIAN_FRONTEND=noninteractive
@@ -25,10 +25,10 @@ RUN apt-get update && apt-get install -y \
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
 
 # 2. Download and install JetBrains PyCharm Community Edition for Linux
-RUN wget https://download.jetbrains.com/python/pycharm-2026.2.3.tar.gz -O /tmp/pycharm.tar.gz && \
-    tar -xzf /tmp/pycharm.tar.gz -C /opt/ && \
-    mv /opt/pycharm-* /opt/pycharm && \
-    rm /tmp/pycharm.tar.gz
+#RUN wget https://download.jetbrains.com/python/pycharm-2026.2.3.tar.gz -O /tmp/pycharm.tar.gz && \
+#    tar -xzf /tmp/pycharm.tar.gz -C /opt/ && \
+#    mv /opt/pycharm-* /opt/pycharm && \
+#    rm /tmp/pycharm.tar.gz
 
 # 3. Copy requirements.txt into the container image
 COPY requirements.txt /tmp/requirements.txt
