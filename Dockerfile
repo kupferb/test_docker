@@ -1,5 +1,5 @@
 # Use official NVIDIA CUDA runtime image compatible with Blackwell (RTX 5090) 
-FROM nvidia/cuda:12.8.0-cudnn-devel-ubuntu22.04
+FROM ubuntu:22.04
 
 # Prevent interactive prompts during package installation
 ENV DEBIAN_FRONTEND=noninteractive
