@@ -21,8 +21,8 @@ RUN apt-get update && apt-get install -y \
     x11-utils \
     && rm -rf /var/lib/apt/lists/*
 
-# Ensure python3 points to python3.10
-RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
+# Ensure python3 points to python3.11
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1
 
 # 2. Download and install JetBrains PyCharm Community Edition for Linux
 #RUN wget https://download.jetbrains.com/python/pycharm-2026.2.3.tar.gz -O /tmp/pycharm.tar.gz && \
